@@ -145,6 +145,10 @@
         .grid-cell:not(.show-numbers) {
             font-size: 0;
         }
+        
+        .grid-cell.no-border {
+            border: none;
+        }
         .legend {
             background: var(--card-bg);
             padding: 15px;
@@ -248,13 +252,22 @@
                     <option value="euclidean" selected>Euclidean Distance</option>
                     <option value="weighted">Weighted RGB</option>
                     <option value="lab">LAB Color Space</option>
+                    <option value="hsv">HSV Distance</option>
+                    <option value="redmean">Redmean Approximation</option>
+                    <option value="posterize">Posterize (Flatten Colors)</option>
+                    <option value="edgeart">Edge Art (Line + Color)</option>
                 </select>
             </div>
             
             <div class="control-group">
-                <label>
-                    <input type="checkbox" id="showNumbers"> Show DMC Numbers on Grid
-                </label>
+                <label for="ditheringAlgorithm">Dithering:</label>
+                <select id="ditheringAlgorithm">
+                    <option value="none">No Dithering</option>
+                    <option value="floyd" selected>Floyd-Steinberg</option>
+                    <option value="atkinson">Atkinson</option>
+                    <option value="ordered">Ordered (Bayer)</option>
+                    <option value="random">Random Noise</option>
+                </select>
             </div>
             
             <div class="control-group">
@@ -265,6 +278,22 @@
             
             <div class="control-section">
                 <img id="imagePreview" class="hidden" alt="Preview">
+            </div>
+        </div>
+        
+        <div id="displayControls" class="controls hidden">
+            <div class="control-section">
+                <div class="control-group">
+                    <label>
+                        <input type="checkbox" id="showNumbers"> Show DMC Numbers on Grid
+                    </label>
+                </div>
+                
+                <div class="control-group">
+                    <label>
+                        <input type="checkbox" id="showGrid" checked> Show Grid
+                    </label>
+                </div>
             </div>
         </div>
         

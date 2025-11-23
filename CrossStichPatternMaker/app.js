@@ -23,6 +23,7 @@ class CrossStitchPatternMaker {
         document.getElementById('colorCount').addEventListener('change', (e) => this.toggleCustomColor(e));
         document.getElementById('themeToggle').addEventListener('click', () => this.toggleTheme());
         document.getElementById('showNumbers').addEventListener('change', (e) => this.toggleGridNumbers(e));
+        document.getElementById('showGrid').addEventListener('change', (e) => this.toggleGrid(e));
     }
 
     toggleCustomGrid(event) {
@@ -47,6 +48,12 @@ class CrossStitchPatternMaker {
     }
 
     toggleGridNumbers(event) {
+        if (this.pattern.length > 0) {
+            this.renderPattern();
+        }
+    }
+
+    toggleGrid(event) {
         if (this.pattern.length > 0) {
             this.renderPattern();
         }
@@ -133,6 +140,7 @@ class CrossStitchPatternMaker {
             parseInt(document.getElementById('customColorCount').value) : 
             parseInt(colorCountSelect);
         const algorithm = document.getElementById('algorithm').value;
+        const ditheringAlgorithm = document.getElementById('ditheringAlgorithm').value;
         
         // Store grid dimensions globally
         this.gridColumns = width;
@@ -143,7 +151,12 @@ class CrossStitchPatternMaker {
         this.canvas.height = this.gridRows;
         this.ctx.drawImage(this.currentImage, 0, 0, this.gridColumns, this.gridRows);
         
-        const imageData = this.ctx.getImageData(0, 0, this.gridColumns, this.gridRows);
+        let imageData = this.ctx.getImageData(0, 0, this.gridColumns, this.gridRows);
+        
+        // Apply dithering if selected
+        if (ditheringAlgorithm !== 'none') {
+            imageData = this.applyDithering(imageData, ditheringAlgorithm, algorithm);
+        }
         
         // Step 3: Map each pixel directly to closest DMC color, then reduce to maxColors
         const pixelDMCMap = new Map();
@@ -298,6 +311,15 @@ class CrossStitchPatternMaker {
                     Math.pow(lab1[1] - lab2[1], 2) +
                     Math.pow(lab1[2] - lab2[2], 2)
                 );
+
+            case 'hsv':
+                return this.hsvDistance(color1, color2);
+            case 'redmean':
+                return this.redmeanDistance(color1, color2);
+            case 'posterize':
+                return this.posterizeDistance(color1, color2);
+            case 'edgeart':
+                return this.edgeArtDistance(color1, color2);
             default: // euclidean
                 return Math.sqrt(
                     Math.pow(color1.r - color2.r, 2) +
@@ -305,6 +327,77 @@ class CrossStitchPatternMaker {
                     Math.pow(color1.b - color2.b, 2)
                 );
         }
+    }
+
+
+
+    hsvDistance(color1, color2) {
+        const hsv1 = this.rgbToHsv(color1.r, color1.g, color1.b);
+        const hsv2 = this.rgbToHsv(color2.r, color2.g, color2.b);
+        const dH = Math.min(Math.abs(hsv1[0] - hsv2[0]), 360 - Math.abs(hsv1[0] - hsv2[0]));
+        return Math.sqrt(
+            Math.pow(dH / 180, 2) +
+            Math.pow(hsv1[1] - hsv2[1], 2) +
+            Math.pow(hsv1[2] - hsv2[2], 2)
+        );
+    }
+
+    redmeanDistance(color1, color2) {
+        const rMean = (color1.r + color2.r) / 2;
+        const dR = color1.r - color2.r;
+        const dG = color1.g - color2.g;
+        const dB = color1.b - color2.b;
+        return Math.sqrt(
+            (2 + rMean / 256) * dR * dR +
+            4 * dG * dG +
+            (2 + (255 - rMean) / 256) * dB * dB
+        );
+    }
+
+    posterizeDistance(color1, color2) {
+        // Flatten colors by reducing to 4 levels per channel (0, 85, 170, 255)
+        const flatten = (c) => Math.round(c / 85) * 85;
+        const flat1 = { r: flatten(color1.r), g: flatten(color1.g), b: flatten(color1.b) };
+        const flat2 = { r: flatten(color2.r), g: flatten(color2.g), b: flatten(color2.b) };
+        return Math.sqrt(
+            Math.pow(flat1.r - flat2.r, 2) +
+            Math.pow(flat1.g - flat2.g, 2) +
+            Math.pow(flat1.b - flat2.b, 2)
+        );
+    }
+
+    edgeArtDistance(color1, color2) {
+        // Combine edge detection with color flattening for line art effect
+        const flatten = (c) => Math.round(c / 64) * 64; // More aggressive flattening
+        const flat1 = { r: flatten(color1.r), g: flatten(color1.g), b: flatten(color1.b) };
+        const flat2 = { r: flatten(color2.r), g: flatten(color2.g), b: flatten(color2.b) };
+        
+        // Calculate luminance for edge detection
+        const lum1 = 0.299 * color1.r + 0.587 * color1.g + 0.114 * color1.b;
+        const lum2 = 0.299 * color2.r + 0.587 * color2.g + 0.114 * color2.b;
+        const edgeWeight = Math.abs(lum1 - lum2) > 50 ? 0.3 : 1.0; // Favor high contrast edges
+        
+        return edgeWeight * Math.sqrt(
+            Math.pow(flat1.r - flat2.r, 2) +
+            Math.pow(flat1.g - flat2.g, 2) +
+            Math.pow(flat1.b - flat2.b, 2)
+        );
+    }
+
+    rgbToHsv(r, g, b) {
+        r /= 255; g /= 255; b /= 255;
+        const max = Math.max(r, g, b);
+        const min = Math.min(r, g, b);
+        const diff = max - min;
+        const v = max;
+        const s = max === 0 ? 0 : diff / max;
+        let h = 0;
+        if (diff !== 0) {
+            if (max === r) h = ((g - b) / diff) % 6;
+            else if (max === g) h = (b - r) / diff + 2;
+            else h = (r - g) / diff + 4;
+        }
+        return [h * 60, s, v];
     }
 
     findClosestSelectedDMCColor(r, g, b, selectedDMCCodes, algorithm) {
@@ -351,32 +444,11 @@ class CrossStitchPatternMaker {
             const hexG = parseInt(hex.substr(2, 2), 16);
             const hexB = parseInt(hex.substr(4, 2), 16);
             
-            let distance;
-            
-            switch (algorithm) {
-                case 'weighted':
-                    distance = Math.sqrt(
-                        2 * Math.pow(r - hexR, 2) +
-                        4 * Math.pow(g - hexG, 2) +
-                        3 * Math.pow(b - hexB, 2)
-                    );
-                    break;
-                case 'lab':
-                    const lab1 = this.rgbToLab(r, g, b);
-                    const lab2 = this.rgbToLab(hexR, hexG, hexB);
-                    distance = Math.sqrt(
-                        Math.pow(lab1[0] - lab2[0], 2) +
-                        Math.pow(lab1[1] - lab2[1], 2) +
-                        Math.pow(lab1[2] - lab2[2], 2)
-                    );
-                    break;
-                default: // euclidean
-                    distance = Math.sqrt(
-                        Math.pow(r - hexR, 2) +
-                        Math.pow(g - hexG, 2) +
-                        Math.pow(b - hexB, 2)
-                    );
-            }
+            const distance = this.calculateColorDistance(
+                { r, g, b },
+                { r: hexR, g: hexG, b: hexB },
+                algorithm
+            );
             
             if (distance < minDistance) {
                 minDistance = distance;
@@ -403,32 +475,11 @@ class CrossStitchPatternMaker {
             const hexG = parseInt(hex.substr(2, 2), 16);
             const hexB = parseInt(hex.substr(4, 2), 16);
             
-            let distance;
-            
-            switch (algorithm) {
-                case 'weighted':
-                    distance = Math.sqrt(
-                        2 * Math.pow(r - hexR, 2) +
-                        4 * Math.pow(g - hexG, 2) +
-                        3 * Math.pow(b - hexB, 2)
-                    );
-                    break;
-                case 'lab':
-                    const lab1 = this.rgbToLab(r, g, b);
-                    const lab2 = this.rgbToLab(hexR, hexG, hexB);
-                    distance = Math.sqrt(
-                        Math.pow(lab1[0] - lab2[0], 2) +
-                        Math.pow(lab1[1] - lab2[1], 2) +
-                        Math.pow(lab1[2] - lab2[2], 2)
-                    );
-                    break;
-                default: // euclidean
-                    distance = Math.sqrt(
-                        Math.pow(r - hexR, 2) +
-                        Math.pow(g - hexG, 2) +
-                        Math.pow(b - hexB, 2)
-                    );
-            }
+            const distance = this.calculateColorDistance(
+                { r, g, b },
+                { r: hexR, g: hexG, b: hexB },
+                algorithm
+            );
             
             if (distance < minDistance) {
                 minDistance = distance;
@@ -462,8 +513,10 @@ class CrossStitchPatternMaker {
         const gridContainer = document.getElementById('gridContainer');
         const patternGrid = document.getElementById('patternGrid');
         const showNumbers = document.getElementById('showNumbers').checked;
+        const showGrid = document.getElementById('showGrid').checked;
         
-        // Show container first to get proper dimensions
+        // Show containers first to get proper dimensions
+        document.getElementById('displayControls').classList.remove('hidden');
         gridContainer.classList.remove('hidden');
         patternGrid.innerHTML = '';
         
@@ -491,7 +544,10 @@ class CrossStitchPatternMaker {
             
             row.forEach(color => {
                 const cell = document.createElement('div');
-                cell.className = showNumbers ? 'grid-cell show-numbers' : 'grid-cell';
+                let cellClass = 'grid-cell';
+                if (showNumbers) cellClass += ' show-numbers';
+                if (!showGrid) cellClass += ' no-border';
+                cell.className = cellClass;
                 cell.style.backgroundColor = color.hex ? `#${color.hex}` : '#000000';
                 cell.style.width = `${cellSize}px`;
                 cell.style.height = `${cellSize}px`;
@@ -580,6 +636,131 @@ class CrossStitchPatternMaker {
         }
         
         return closestColor;
+    }
+
+    applyDithering(imageData, ditheringType, algorithm) {
+        switch (ditheringType) {
+            case 'floyd': return this.floydSteinbergDithering(imageData, algorithm);
+            case 'atkinson': return this.atkinsonDithering(imageData, algorithm);
+            case 'ordered': return this.orderedDithering(imageData, algorithm);
+            case 'random': return this.randomDithering(imageData, algorithm);
+            default: return imageData;
+        }
+    }
+
+    floydSteinbergDithering(imageData, algorithm) {
+        const data = new Uint8ClampedArray(imageData.data);
+        const width = imageData.width;
+        const height = imageData.height;
+        
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                const index = (y * width + x) * 4;
+                const oldR = data[index], oldG = data[index + 1], oldB = data[index + 2];
+                
+                const dmcColor = this.getClosestDMCColor(oldR, oldG, oldB, algorithm);
+                const newR = parseInt(dmcColor.hex.substr(0, 2), 16);
+                const newG = parseInt(dmcColor.hex.substr(2, 2), 16);
+                const newB = parseInt(dmcColor.hex.substr(4, 2), 16);
+                
+                data[index] = newR; data[index + 1] = newG; data[index + 2] = newB;
+                
+                const errR = oldR - newR, errG = oldG - newG, errB = oldB - newB;
+                this.distributeError(data, width, height, x + 1, y, errR, errG, errB, 7/16);
+                this.distributeError(data, width, height, x - 1, y + 1, errR, errG, errB, 3/16);
+                this.distributeError(data, width, height, x, y + 1, errR, errG, errB, 5/16);
+                this.distributeError(data, width, height, x + 1, y + 1, errR, errG, errB, 1/16);
+            }
+        }
+        return new ImageData(data, width, height);
+    }
+
+    atkinsonDithering(imageData, algorithm) {
+        const data = new Uint8ClampedArray(imageData.data);
+        const width = imageData.width, height = imageData.height;
+        
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                const index = (y * width + x) * 4;
+                const oldR = data[index], oldG = data[index + 1], oldB = data[index + 2];
+                
+                const dmcColor = this.getClosestDMCColor(oldR, oldG, oldB, algorithm);
+                const newR = parseInt(dmcColor.hex.substr(0, 2), 16);
+                const newG = parseInt(dmcColor.hex.substr(2, 2), 16);
+                const newB = parseInt(dmcColor.hex.substr(4, 2), 16);
+                
+                data[index] = newR; data[index + 1] = newG; data[index + 2] = newB;
+                
+                const errR = oldR - newR, errG = oldG - newG, errB = oldB - newB;
+                this.distributeError(data, width, height, x + 1, y, errR, errG, errB, 1/8);
+                this.distributeError(data, width, height, x + 2, y, errR, errG, errB, 1/8);
+                this.distributeError(data, width, height, x - 1, y + 1, errR, errG, errB, 1/8);
+                this.distributeError(data, width, height, x, y + 1, errR, errG, errB, 1/8);
+                this.distributeError(data, width, height, x + 1, y + 1, errR, errG, errB, 1/8);
+                this.distributeError(data, width, height, x, y + 2, errR, errG, errB, 1/8);
+            }
+        }
+        return new ImageData(data, width, height);
+    }
+
+    orderedDithering(imageData, algorithm) {
+        const data = new Uint8ClampedArray(imageData.data);
+        const width = imageData.width, height = imageData.height;
+        const bayerMatrix = [[0,8,2,10],[12,4,14,6],[3,11,1,9],[15,7,13,5]];
+        
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                const index = (y * width + x) * 4;
+                const threshold = (bayerMatrix[y % 4][x % 4] / 16) * 64 - 32;
+                
+                const oldR = Math.max(0, Math.min(255, data[index] + threshold));
+                const oldG = Math.max(0, Math.min(255, data[index + 1] + threshold));
+                const oldB = Math.max(0, Math.min(255, data[index + 2] + threshold));
+                
+                const dmcColor = this.getClosestDMCColor(oldR, oldG, oldB, algorithm);
+                data[index] = parseInt(dmcColor.hex.substr(0, 2), 16);
+                data[index + 1] = parseInt(dmcColor.hex.substr(2, 2), 16);
+                data[index + 2] = parseInt(dmcColor.hex.substr(4, 2), 16);
+            }
+        }
+        return new ImageData(data, width, height);
+    }
+
+    randomDithering(imageData, algorithm) {
+        const data = new Uint8ClampedArray(imageData.data);
+        const width = imageData.width, height = imageData.height;
+        
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                const index = (y * width + x) * 4;
+                const noise = (Math.random() - 0.5) * 64;
+                
+                const oldR = Math.max(0, Math.min(255, data[index] + noise));
+                const oldG = Math.max(0, Math.min(255, data[index + 1] + noise));
+                const oldB = Math.max(0, Math.min(255, data[index + 2] + noise));
+                
+                const dmcColor = this.getClosestDMCColor(oldR, oldG, oldB, algorithm);
+                data[index] = parseInt(dmcColor.hex.substr(0, 2), 16);
+                data[index + 1] = parseInt(dmcColor.hex.substr(2, 2), 16);
+                data[index + 2] = parseInt(dmcColor.hex.substr(4, 2), 16);
+            }
+        }
+        return new ImageData(data, width, height);
+    }
+
+    getClosestDMCColor(r, g, b, algorithm) {
+        return typeof DMC_COLORS_COMPLETE !== 'undefined' ? 
+            this.findClosestDMCColorComplete(r, g, b, algorithm) : 
+            this.findClosestDMCColor(r, g, b, algorithm);
+    }
+    
+    distributeError(data, width, height, x, y, errR, errG, errB, factor) {
+        if (x >= 0 && x < width && y >= 0 && y < height) {
+            const index = (y * width + x) * 4;
+            data[index] = Math.max(0, Math.min(255, data[index] + errR * factor));
+            data[index + 1] = Math.max(0, Math.min(255, data[index + 1] + errG * factor));
+            data[index + 2] = Math.max(0, Math.min(255, data[index + 2] + errB * factor));
+        }
     }
 
     printPattern() {
