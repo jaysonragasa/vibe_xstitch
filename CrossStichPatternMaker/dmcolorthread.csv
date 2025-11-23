@@ -1,0 +1,485 @@
+DMC Number,Color Name,Approx Hex
+Ecru,Ecru/off-white,#F0EAD6
+Blanc,White,#FFFFFF
+B5200,Snow White,#FFFFFF
+1,White Tin,#D6D6D7
+2,Tin,#BDBCC3
+3,Tin Medium,#9C9CA5
+4,Tin - Dark,#7B7A82
+5,Driftwood Light,#B7A899
+6,Driftwood - Medium Light,#A29384
+7,Driftwood,#7F7061
+8,Driftwood - Dark,#63564A
+9,Cocoa - Very Dark,#3F2E23
+10,Tender Green - Very Light,#E3E9C2
+11,Tender Green - Light,#D1DBA4
+12,Tender Green,#BCCB89
+13,Nile Green Medium Light,#A6B889
+14,Apple Green - Pale,#E6EF93
+15,Apple Green,#D5E27B
+16,Chartreuse - Light,#C2D469
+17,Yellow Plum - Light,#EDE66A
+18,Yellow Plum,#DED351
+19,Autumn Gold Medium Light,#E6B950
+20,Shrimp,#F4A37D
+21,Alizarian Light,#DA7964
+22,Alizarian,#B94E48
+23,Apple Blossom,#F1E0DC
+24,White Lavender,#E4DEE6
+25,Lavender - Ultra Light,#CEC6D5
+26,Lavender - Pale,#B7ADC4
+27,White Violet,#ECE8EE
+28,Eggplant - Medium Light,#A596AA
+29,Eggplant,#7D6B82
+30,Blueberry - Medium Light,#9EA8C0
+31,Blueberry,#7887A5
+32,Blueberry - Dark,#5D6E90
+33,Fuchsia,#A84C82
+34,Fuchsia Dark,#84325F
+35,Fuchsia - Very Dark,#571B3C
+150,Red - Bright,#AB0249
+151,Pink,#F0CED0
+152,Tawny - Dark,#E2A093
+153,Lilac,#E6CDDD
+154,Red - Very Dark,#582635
+155,Forget-me-not Blue,#9891C0
+156,Blue Medium,#9AA9CA
+157,Blue - Light,#BBCBE4
+158,Blue - Dark,#455985
+159,Petrol Blue - Light,#C7CED7
+160,Petrol Blue - Medium,#909DAE
+161,Petrol Blue - Dark,#5F7285
+162,Baby Blue Light,#DBECF5
+163,Green,#4C8657
+164,Green - Light,#C8D994
+165,Green - Bright,#EFF298
+166,Lime Green,#C5D027
+167,Khaki Brown,#A68656
+168,Silver Gray,#D1D1D1
+169,Pewter Gray,#848484
+208,Lavender - Very Dark,#845A92
+209,Lavender - Dark,#A279AD
+210,Lavender - Medium,#C4A4CD
+211,Lavender - Light,#E3CBE3
+221,Shell Pink - Very Dark,#883D3E
+223,Shell Pink - Light,#CC847C
+224,Shell Pink - Very Light,#EBB4A9
+225,Shell Pink - Ultra Very Light,#F7D8CD
+300,Mahogany - Very Dark,#6F3820
+301,Mahogany - Medium,#B15F37
+304,Red Medium,#B51A31
+307,Lemon,#FBE619
+309,Rose - Dark,#BA2F4C
+310,Black,#000000
+311,Blue Medium,#1C5081
+312,Baby Blue - Very Dark,#305684
+315,Antique Mauve - Medium Dark,#814856
+316,Antique Mauve - Medium,#B57688
+317,Pewter Gray,#6C666E
+318,Steel Gray - Light,#ABABAB
+319,Pistachio Green - Very Dark,#305C3D
+320,Pistachio Green Medium,#698863
+321,Red,#C70222
+322,Baby Blue,#5880A5
+326,Rose - Very Dark,#B52140
+327,Violet,#623668
+333,Blue Violet - Very Dark,#5C4687
+334,Baby Blue - Medium,#7693B3
+335,Rose,#EE536B
+336,Blue,#253B6E
+340,Blue Violet - Medium,#A0A7CC
+341,Blue Violet - Light,#B3C3E3
+347,Salmon - Very Dark,#BF2D2D
+349,Coral - Dark,#D11E26
+350,Coral - Medium,#E34539
+351,Coral,#E96A59
+352,Coral - Light,#F39B88
+353,Peach,#FDD7CC
+355,Terra Cotta - Dark,#9B4232
+356,Terra Cotta - Medium,#C56C5A
+367,Pistachio Green - Dark,#617D58
+368,Pistachio Green - Light,#A7C191
+369,Pistachio Green - Very Light,#D3E4C6
+370,Mustard Medium,#A78B55
+371,Mustard,#B69B60
+372,Mustard - Light,#CCB67B
+400,Mahogany - Dark,#8F4521
+402,Mahogany - Very Light,#F1A77E
+407,Desert Sand - Dark,#BB8C72
+413,Pewter Gray - Dark,#565656
+414,Steel Gray - Dark,#8C8C8C
+415,Pearl Gray,#D6D6D6
+420,Hazelnut Brown - Dark,#A07142
+422,Hazelnut Brown - Light,#C7A67D
+433,Brown Medium,#7B4828
+434,Brown - Light,#9C5E35
+435,Brown - Very Light,#B67243
+436,Tan,#CB8B5C
+437,Tan - Light,#E3B68A
+444,Lemon Dark,#FFD600
+445,Lemon - Light,#FFF597
+451,Shell Gray - Dark,#907E78
+452,Shell Gray - Medium,#AD9C96
+453,Shell Gray Light,#C7BAB6
+469,Avocado Green,#6C7544
+470,Avocado Green - Light,#8A9A5B
+471,Avocado Green - Very Light,#AAB979
+472,Avocado Green - Ultra Light,#D3E099
+498,Red - Dark,#A70E20
+500,Blue Green - Very Dark,#2F4F4F
+501,Blue Green - Dark,#396F5E
+502,Blue Green,#558F7B
+503,Blue Green - Medium,#7CB0A0
+504,Blue Green - Very Light,#A4D0C1
+505,Grass Green - Dark,#3B6E46
+517,Wedgewood - Dark,#376B8E
+518,Wedgewood - Light,#5E8CAB
+519,Sky Blue,#8CBED6
+520,Fern Green - Dark,#4A5E3F
+522,Fern Green,#86957D
+523,Fern Green - Light,#A7B2A1
+524,Fem Green - Very Light,#C4CDBC
+535,Ash Gray - Very Light,#616161
+543,Beige Brown - Ultra Very Light,#E8DCCA
+550,Violet - Very Dark,#5D2866
+552,Violet - Medium,#844C8F
+553,Violet,#A064AB
+554,Violet - Light,#D19EC4
+561,Jade - Very Dark,#2C6652
+562,Jade Medium,#4C8C6C
+563,Jade - Light,#89C5A8
+564,Jade Very Light,#A9D6BE
+580,Moss Green - Dark,#768138
+581,Moss Green,#9EA845
+597,Turquoise,#5B9BA0
+598,Turquoise - Light,#92C5C9
+600,Cranberry - Very Dark,#CD2C62
+601,Cranberry - Dark,#D3356E
+602,Cranberry - Medium,#E05586
+603,Cranberry - Light Medium,#EA8BAC
+604,Cranberry - Light,#F3B2C9
+605,Cranberry - Very Light,#F7D1DE
+606,Orange-red - Bright,#FA3205
+608,Orange Bright,#FD5D1C
+610,Drab Brown - Dark,#7B664C
+611,Drab Brown,#947C5C
+612,Drab Brown - Light,#B19976
+613,Drab Brown - Very Light,#D0BFA2
+632,Desert Sand - Ultra Very Dark,#8A543B
+640,Beige Gray - Very Dark,#827B66
+642,Beige Gray - Dark,#9C947E
+644,Beige Gray - Medium,#D5CCB7
+645,Beaver Gray - Very Dark,#6C675E
+646,Beaver Gray - Dark,#868076
+647,Beaver Gray - Medium,#A6A095
+648,Beaver Gray - Light,#BCB5AA
+666,Red - Bright,#E3021D
+676,Old Gold Light,#E2C17D
+677,Old Gold Very Light,#F2E6CE
+680,Old Gold - Dark,#B78B2D
+699,Green,#066A39
+700,Green - Bright,#098242
+701,Green - Light,#3E9C5E
+702,Kelly Green,#47B056
+703,Chartreuse,#76B856
+704,Chartreuse Bright,#95CA65
+712,Cream,#F6F3E6
+718,Plum,#C5427E
+720,Orange Spice - Dark,#D85C28
+721,Orange Spice - Medium,#F37F47
+722,Orange Spice - Light,#F69F6E
+725,Topaz,#FCD04B
+726,Topaz - Light,#FDE061
+727,Topaz - Very Light,#FEF099
+728,Golden Yellow,#E8B237
+729,Old Gold - Medium,#CF9F47
+730,Olive Green - Very Dark,#786B33
+732,Olive Green,#8A8143
+733,Olive Green - Medium,#BCB364
+734,Olive Green Light,#D2C97A
+738,Tan Very Light,#E5D0A7
+739,Tan Ultra Very Light,#F3E6C7
+740,Tangerine,#FF8B00
+741,Tangerine - Medium,#FFAD00
+742,Tangerine - Light,#FFD349
+743,Yellow - Medium,#FEE069
+744,Yellow Pale,#FEEBA0
+745,Yellow - Light Pale,#FEF4B9
+746,Off White,#FCFCE7
+747,Sky Blue - Very Light,#E4F3F5
+754,Peach - Light,#F4C4BA
+758,Terra Cotta - Very Light,#E4A999
+760,Salmon,#F09187
+761,Salmon - Light,#F8C6C4
+762,Pearl Gray - Very Light,#ECECEC
+772,Yellow Green - Very Light,#DCEBC2
+775,Baby Blue Very Light,#D9EBF1
+777,Red - Deep,#8D1933
+778,Antique Mauve - Very Light,#D8B2BC
+779,Brown,#6C524E
+780,Topaz - Ultra Very Dark,#935E1F
+782,Topaz - Dark,#AE732A
+783,Topaz - Medium,#CE9238
+791,Cornflower Blue - Very Dark,#373E72
+792,Cornflower Blue - Dark,#505A8D
+793,Cornflower Blue Medium,#6F7AA8
+794,Cornflower Blue - Light,#94A5C9
+796,Royal Blue - Dark,#114088
+797,Royal Blue,#17529F
+798,Delft Blue - Dark,#4070A6
+799,Delft Blue - Medium,#6492C1
+800,Delft Blue - Pale,#B1CBE3
+801,Coffee Brown - Dark,#633D27
+803,Blue - Deep,#2F5A8C
+807,Peacock Blue,#569EAA
+809,Delft Blue,#95B4D0
+813,Blue - Light,#A2C3DA
+814,Garnet - Dark,#7B1229
+815,Garnet Medium,#8B182D
+816,Garnet,#A50F2C
+817,Coral Red - Very Dark,#BB182D
+818,Baby Pink,#FCD9DA
+819,Baby Pink - Light,#FDECEB
+820,Royal Blue - Very Dark,#0F2856
+822,Beige Gray - Light,#E7E2D6
+823,Blue - Dark,#233355
+824,Blue Very Dark,#39587F
+825,Blue - Dark,#47719B
+826,Blue Medium,#678FB2
+827,Blue - Very Light,#BDD6E7
+828,Blue Ultra Very Light,#D9E9F0
+829,Golden Olive - Very Dark,#766129
+830,Golden Olive - Dark,#846E35
+831,Golden Olive - Medium,#A28B4E
+832,Golden Olive,#BD9F59
+833,Golden Olive - Light,#D1B76C
+834,Golden Olive - Very Light,#E3D08A
+838,Beige Brown - Very Dark,#503E35
+839,Beige Brown - Dark,#675143
+840,Beige Brown - Medium,#886F5C
+841,Beige Brown - Light,#AC927C
+842,Beige Brown - Very Light,#CEB6A0
+844,Beaver Gray - Ultra Dark,#525252
+869,Hazelnut Brown - Very Dark,#835C35
+890,Pistachio Green - Ultra Dark,#1B472E
+891,Carnation Dark,#F14B5A
+892,Carnation Medium,#F46D77
+893,Carnation - Light,#F78E9A
+894,Carnation - Very Light,#FBBBC3
+895,Hunter Green - Very Dark,#1B5129
+898,Coffee Brown - Very Dark,#492A13
+899,Rose Medium,#EB8E99
+900,Burnt Orange - Dark,#CC4316
+902,Garnet Very Dark,#821B35
+904,Parrot Green - Very Dark,#4C7C2B
+905,Parrot Green - Dark,#5D9237
+906,Parrot Green - Medium,#76AE45
+907,Parrot Green - Light,#9ACD62
+909,Emerald Green - Very Dark,#08734C
+910,Emerald Green - Dark,#14865A
+911,Emerald Green - Medium,#1B9D6C
+912,Emerald Green - Light,#4AB687
+913,Nile Green - Medium,#75C197
+915,Plum - Dark,#880E46
+917,Plum - Medium,#A81E61
+918,Red Copper - Dark,#863024
+919,Red Copper,#A23C2C
+920,Copper - Medium,#B7513B
+921,Copper,#CC6448
+922,Copper - Light,#DE7E61
+924,Gray Green - Very Dark,#4B5F64
+926,Gray Green - Medium,#8C9EA4
+927,Gray Green - Light,#BCCBCF
+928,Gray Green - Very Light,#DCE6E7
+930,Antique Blue - Dark,#455E75
+931,Antique Blue - Medium,#658299
+932,Antique Blue - Light,#95B1C5
+934,Avocado Green - BLACK,#313825
+935,Avocado Green - Dark,#424D2D
+936,Avocado Green - Very Dark,#4C5835
+937,Avocado Green - Medium,#627144
+938,Coffee Brown - Ultra Dark,#362217
+939,Blue Very Dark,#1B2844
+943,Aquamarine - Medium,#3E9B86
+945,Tawny,#F3D3C1
+946,Burnt Orange - Medium,#EB5D21
+947,Burnt Orange,#F37841
+948,Peach - Very Light,#FEE4D6
+950,Desert Sand - Light,#E2C3AF
+951,Tawny - Light,#F1DDCB
+954,Nile Green,#87C79F
+955,Nile Green - Light,#A7DAB6
+956,Geranium,#F56076
+957,Geranium - Pale,#F9A4B1
+958,Seagreen - Dark,#349680
+959,Seagreen - Medium,#5BB59D
+961,Dusty Rose - Dark,#D35A74
+962,Dusty Rose - Medium,#DF7D92
+963,Dusty Rose - Ultra Very Light,#F7D0D8
+964,Seagreen Light,#A0DAC9
+966,Baby Green - Medium,#99C2A4
+967,Peach - Light,#F9C7B5
+970,Pumpkin Light,#F17429
+972,Canary - Deep,#FFB918
+973,Canary - Bright,#FFDC19
+975,Golden Brown - Dark,#86481F
+976,Golden Brown Medium,#C07E46
+977,Golden Brown - Light,#DCAB72
+986,Forest Green - Very Dark,#304D30
+987,Forest Green - Dark,#42633C
+988,Forest Green - Medium,#577A4D
+989,Forest Green,#769668
+991,Aquamarine - Dark,#367B6B
+992,Aquamarine - Light,#6BB1A1
+993,Aquamarine - Very Light,#97C9BE
+995,Electric Blue - Dark,#0D7CBE
+996,Electric Blue - Medium,#27AEE3
+3011,Khaki Green - Dark,#79784E
+3012,Khaki Green - Medium,#A29F62
+3013,Khaki Green - Light,#C0BD88
+3021,Brown Gray - Very Dark,#4F4741
+3022,Brown Gray - Medium,#8E8883
+3023,Brown Gray - Light,#AAATA3
+3024,Brown Gray - Very Light,#D1CFC9
+3031,Mocha Brown - Very Dark,#403328
+3032,Mocha Brown - Medium,#A49281
+3033,Mocha Brown - Very Light,#D1C6BA
+3041,Antique Violet - Medium,#896F82
+3042,Antique Violet - Light,#B4A3AF
+3045,Yellow Beige - Dark,#B19867
+3046,Yellow Beige - Medium,#CEC18D
+3047,Yellow Beige - Light,#E3DAB6
+3051,Green Gray - Dark,#4D523C
+3052,Green Gray - Medium,#80866D
+3053,Green Gray,#9DA388
+3064,Desert Sand,#BB866B
+3072,Beaver Gray - Very Light,#E0DFDB
+3078,Golden Yellow - Very Light,#FDF6B5
+3325,Baby Blue Light,#B4CBE1
+3326,Rose - Light,#F49FA9
+3328,Salmon Dark,#BD363D
+3340,Apricot - Medium,#FC6C52
+3341,Apricot,#FC967E
+3345,Hunter Green - Dark,#345535
+3346,Hunter Green,#537953
+3347,Yellow Green Medium,#6C9361
+3348,Yellow Green - Light,#A3C495
+3350,Dusty Rose - Ultra Dark,#BD3555
+3354,Dusty Rose - Light,#EDB6C1
+3362,Pine Green - Dark,#425640
+3363,Pine Green - Medium,#60765C
+3364,Pine Green,#879B7F
+3371,Black Brown,#1E1108
+3607,Plum - Light,#C24584
+3608,Plum - Very Light,#EA88B8
+3609,Plum - Ultra Light,#F4B2D4
+3685,Mauve - Very Dark,#63172F
+3687,Mauve,#AC4E64
+3688,Mauve Medium,#D68D9D
+3689,Mauve - Light,#F6C5D0
+3705,Melon Dark,#FF5061
+3706,Melon Medium,#FF7C85
+3708,Melon - Light,#FFABB2
+3712,Salmon Medium,#DE6056
+3713,Salmon - Very Light,#FCD9D1
+3716,Dusty Rose - Very Light,#FCAEB8
+3721,Shell Pink - Dark,#9B4543
+3722,Shell Pink - Medium,#BA635F
+3726,Antique Mauve - Dark,#9C5E6B
+3727,Antique Mauve - Light,#DFA8B4
+3731,Dusty Rose - Very Dark,#BF4C65
+3733,Dusty Rose,#E37E90
+3740,Antique Violet - Dark,#6C5065
+3743,Antique Violet - Very Light,#D5CCD7
+3746,Blue Violet - Dark,#736BA6
+3747,Blue Violet - Very Light,#D1DAEE
+3750,Antique Blue - Very Dark,#324E62
+3752,Antique Blue - Very Light,#C0D1DD
+3753,Antique Blue - Ultra Very Light,#DBE3E9
+3755,Baby Blue,#89ACCB
+3756,Baby Blue Light,#E8F0F6
+3760,Wedgewood - Medium,#4C84A9
+3761,Sky Blue Light,#BBD7E4
+3765,Peacock Blue - Very Dark,#27687B
+3766,Peacock Blue - Light,#8BBBC4
+3768,Gray Green - Dark,#587178
+3770,Tawny - Very Light,#FBF0E2
+3771,Peach Dark,#D88B71
+3772,Desert Sand - Very Dark,#9D7058
+3774,Desert Sand - Very Light,#F4D9C7
+3776,Mahogany - Light,#CF7950
+3777,Terra Cotta Very Dark,#8B2925
+3778,Terra Cotta - Light,#D98C7A
+3779,Terra Cotta - Ultra Very Light,#F3C5BA
+3781,Mocha Brown - Dark,#574435
+3782,Mocha Brown - Light,#BFAC96
+3787,Brown Gray - Dark,#5E564F
+3790,Beige Gray - Ultra Dark,#766A55
+3799,Pewter Gray - Very Dark,#424242
+3801,Melon - Very Dark,#E33D50
+3802,Antique Mauve - Very Dark,#743C4A
+3803,Mauve Dark,#8C3450
+3804,Cyclamen Pink - Dark,#BC2B66
+3805,Cyclamen Pink,#D64983
+3806,Cyclamen Pink - Light,#F289B0
+3807,Cornflower Blue,#5E6999
+3808,Turquoise - Ultra Very Dark,#275E61
+3809,Turquoise - Very Dark,#3F7C81
+3810,Turquoise - Dark,#58989D
+3811,Turquoise - Very Light,#BCE3E5
+3812,Seagreen - Very Dark,#499684
+3813,Blue Green Light,#A8CDBF
+3814,Aquamarine,#579589
+3815,Celadon Green - Dark,#4D7863
+3816,Celadon Green,#699B81
+3817,Celadon Green - Light,#94C2AA
+3818,Emerald Green - Ultra Very Dark,#2E694D
+3819,Moss Green - Light,#CCD575
+3820,Straw - Dark,#DFB663
+3821,Straw,#F0C873
+3822,Straw - Light,#F9D990
+3823,Yellow - Ultra Pale,#FDF7C7
+3824,Apricot - Light,#FDC6B3
+3825,Pumpkin - Pale,#FDC7A1
+3826,Golden Brown,#AD7342
+3827,Golden Brown - Pale,#F3BB88
+3828,Hazelnut Brown,#B68B5B
+3829,Old Gold - Very Dark,#9D742D
+3830,Terra Cotta,#B55848
+3831,Raspberry - Dark,#B43048
+3832,Raspberry - Medium,#DB576E
+3833,Raspberry - Light,#EA869A
+3834,Grape - Dark,#70356C
+3835,Grape - Medium,#90498B
+3836,Grape - Light,#B878B3
+3837,Lavender - Ultra Dark,#6C427C
+3838,Lavender Blue - Dark,#5D6A9C
+3839,Lavender Blue Medium,#7D8BC0
+3840,Lavender Blue - Light,#B0C0E3
+3841,Baby Blue Pale,#CDDFEE
+3842,Wedgewood - Dark,#306286
+3843,Electric Blue,#158DD0
+3844,Bright Turquoise - Dark,#1391A4
+3845,Bright Turquoise - Medium,#40B2C5
+3846,Bright Turquoise - Light,#7ED6E3
+3847,Teal Green - Dark,#2B7E76
+3848,Teal Green - Medium,#599890
+3849,Teal Green Light,#7EB3AB
+3850,Bright Green - Dark,#348645
+3851,Bright Green - Light,#5DB570
+3852,Straw - Very Dark,#CD9938
+3853,Autumn Gold - Dark,#CA7A31
+3854,Autumn Gold - Medium,#F0A361
+3855,Autumn Gold - Light,#FAD396
+3856,Mahogany - Ultra Very Light,#F3C0A1
+3857,Rosewood - Dark,#683F34
+3858,Rosewood - Medium,#935C50
+3859,Rosewood Light,#BB8779
+3860,Cocoa,#765C53
+3861,Cocoa - Light,#A2877E
+3862,Mocha Beige - Dark,#866650
+3863,Mocha Beige - Medium,#A38570
+3864,Mocha Beige - Light,#CBB3A2
+3865,Winter White,#F9F7F1
+3866,Mocha Brown - Ultra Very Light,#EBE1D6
+3891,Electric Blue - Dark,#158DD0

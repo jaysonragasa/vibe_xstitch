@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross Stitch Pattern Maker</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f5;
+            --card-bg: white;
+            --text-color: #333;
+            --border-color: #ddd;
+            --button-bg: #007bff;
+            --button-hover: #0056b3;
+            --grid-border: #ccc;
+        }
+        
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --card-bg: #2d2d2d;
+            --text-color: #e0e0e0;
+            --border-color: #555;
+            --button-bg: #0d6efd;
+            --button-hover: #0b5ed7;
+            --grid-border: #666;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .theme-toggle {
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .theme-toggle:hover {
+            background: var(--button-hover);
+        }
+        .controls {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 1200px;
+            }
+            
+            .controls {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+                align-items: start;
+            }
+            
+            .control-section {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        .control-group {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        label input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+        }
+        input, button, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+            background: var(--card-bg);
+            color: var(--text-color);
+        }
+        button {
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+        button:hover {
+            background-color: var(--button-hover);
+        }
+        .grid-container {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+
+        .pattern-grid {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .grid-cell {
+            border: 1px solid var(--grid-border);
+            text-align: center;
+            color: white;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+        
+        .grid-cell.show-numbers {
+            font-size: 6px;
+        }
+        
+        .grid-cell:not(.show-numbers) {
+            font-size: 0;
+        }
+        .legend {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        @media (min-width: 768px) {
+            .legend {
+                columns: 2;
+                column-gap: 20px;
+            }
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #333;
+            margin-right: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        #imagePreview {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+        @media print {
+            .controls { display: none; }
+            body { background: white; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Cross Stitch Pattern Maker</h1>
+            <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+        </div>
+        
+        <div class="controls">
+            <div class="control-section">
+            <div class="control-group">
+                <label for="imageUpload">Upload Photo:</label>
+                <input type="file" id="imageUpload" accept="image/*">
+            </div>
+            
+            <div class="control-group">
+                <button id="cameraBtn">Take Photo from Camera</button>
+                <video id="camera" class="hidden" autoplay></video>
+                <button id="captureBtn" class="hidden">Capture Photo</button>
+            </div>
+            
+            <div class="control-group">
+                <label for="gridSize">Grid Size:</label>
+                <select id="gridSize">
+                    <option value="20">20x20</option>
+                    <option value="30" selected>30x30</option>
+                    <option value="40">40x40</option>
+                    <option value="50">50x50</option>
+                    <option value="75">75x75</option>
+                    <option value="100">100x100</option>
+                    <option value="custom">Custom</option>
+                </select>
+            </div>
+            
+            <div class="control-group" id="customGridGroup" style="display:none;">
+                <label for="customGridWidth">Custom Width:</label>
+                <input type="number" id="customGridWidth" min="10" max="100" value="30">
+                <label for="customGridHeight">Custom Height:</label>
+                <input type="number" id="customGridHeight" min="10" max="100" value="30">
+            </div>
+            
+            <div class="control-group">
+                <label for="colorCount">Number of Colors:</label>
+                <select id="colorCount">
+                    <option value="8">8 colors</option>
+                    <option value="16" selected>16 colors</option>
+                    <option value="24">24 colors</option>
+                    <option value="32">32 colors</option>
+                    <option value="48">48 colors</option>
+                    <option value="64">64 colors</option>
+                    <option value="custom">Custom</option>
+                </select>
+            </div>
+            
+            <div class="control-group" id="customColorGroup" style="display:none;">
+                <label for="customColorCount">Custom Color Count:</label>
+                <input type="number" id="customColorCount" min="4" max="64" value="16">
+            </div>
+            
+            <div class="control-group">
+                <label for="algorithm">Color Algorithm:</label>
+                <select id="algorithm">
+                    <option value="euclidean" selected>Euclidean Distance</option>
+                    <option value="weighted">Weighted RGB</option>
+                    <option value="lab">LAB Color Space</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label>
+                    <input type="checkbox" id="showNumbers"> Show DMC Numbers on Grid
+                </label>
+            </div>
+            
+            <div class="control-group">
+                <button id="generatePattern">Generate Pattern</button>
+                <button id="printPattern">Print Pattern</button>
+            </div>
+            </div>
+            
+            <div class="control-section">
+                <img id="imagePreview" class="hidden" alt="Preview">
+            </div>
+        </div>
+        
+        <div id="gridContainer" class="grid-container hidden">
+            <div id="patternGrid" class="pattern-grid"></div>
+        </div>
+        
+        <div id="legend" class="legend hidden">
+            <h3>DMC Color Legend</h3>
+            <div id="legendItems"></div>
+        </div>
+    </div>
+
+    <script src="dmc-colors-complete.js"></script>
+    <script src="print-manager.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
